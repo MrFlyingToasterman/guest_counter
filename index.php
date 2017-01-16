@@ -15,11 +15,8 @@ GPLv3
                 $handle_mit_es = fopen("local_file.log", "a");
                 $gone_call = 1;
             }
-            
-            //Headless but maybe i could need this in future...
-            $_COOKIE['cookiemonster'] = true;
                 
-            //Open file
+            //Open file for read and write
             $gonna_call = fopen("local_file.log", "r+");
 
             //gone_call get value of gonna_call
@@ -31,11 +28,14 @@ GPLv3
                 //count plus one
                 $gone_call = $gone_call + 1;
 
-                //???
+                //Reset filepointer
                 rewind($gonna_call);
 
                 //Write it back
                 fputs($gonna_call, $gone_call);
+                
+                //Set cookie with value "true"
+                setcookie('cookiemonster', true);
 
             } else {
                 // do nothing because you are not uniqe!
